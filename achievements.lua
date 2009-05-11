@@ -9,13 +9,17 @@ local env = setmetatable({
 			local numCriteria = GetAchievementNumCriteria(id)
 			local completed = 0
 			for i=1, numCriteria do
-				local _, _, criteriaCompleted = GetAchievementCriteriaInfo(id, i)
-				if(criteriaCompleted) then
+				local _, _, criteriaCompleted, _, _, _, flags = GetAchievementCriteriaInfo(id, i)
+				if(criteriaCompleted and flags ~= 1) then
 					completed = completed + 1
 				end
 			end
 
-			return id, ('%s [%d/%d]'):format(name, completed, numCriteria), points, completed, month, day, year, description, flags, icon, rewardText
+			if(completed > 0) then
+				name = ('%s [%d/%d]'):format(name, completed, numCriteria)
+			end
+
+			return id, name, points, completed, month, day, year, description, flags, icon, rewardText
 		end
 	end,
 }, {__index = _G})
