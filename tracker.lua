@@ -42,7 +42,8 @@ function frame:ADDON_LOADED(event, addon)
 		loaded = true
 		self:UnregisterEvent'ADDON_LOADED'
 		self.ADDON_LOADED = nil
-		self:SetScript('OnEvent', nil)
+
+		if(not self:IsEventRegistered'QUEST_LOG_UPDATE') then self:SetScript('OnEvent', nil) end
 	end
 end
 
@@ -52,6 +53,8 @@ function frame:QUEST_LOG_UPDATE()
 	end
 	self:UnregisterEvent'QUEST_LOG_UPDATE'
 	self.QUEST_LOG_UPDATE = nil
+
+	if(not self:IsEventRegistered'ADDON_LOADED') then self:SetScript('OnEvent', nil) end
 end
 
 frame:RegisterEvent'ADDON_LOADED'
