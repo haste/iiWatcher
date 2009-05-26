@@ -1,4 +1,10 @@
 ## Interface: 30100
 ## Title: iiWatcher
+## Author: haste
+## Version: 1.0
+## X-eMail: troeks@gmail.com
 ## Notes: Various improvements to the watcher frame.
+## SavedVariablesPerCharacter: iiWatcherDB
+
 achievements.lua
+tracker.lua
