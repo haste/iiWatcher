@@ -48,7 +48,8 @@ function frame:QUEST_LOG_UPDATE()
 	for qid in next, iiWatcherDB.quests do
 		AddQuestWatch(qid)
 	end
-	frame:UnregisterEvent'QUEST_LOG_UPDATE'
+	self:UnregisterEvent'QUEST_LOG_UPDATE'
+	self.QUEST_LOG_UPDATE = nil
 end
 
 frame:RegisterEvent'ADDON_LOADED'
