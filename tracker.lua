@@ -39,8 +39,10 @@ function frame:ADDON_LOADED(event, addon)
 			AddTrackedAchievement(aid)
 		end
 
-		WatchFrame_Update()
 		loaded = true
+		self:UnregisterEvent'ADDON_LOADED'
+		self.ADDON_LOADED = nil
+		self:SetScript('OnEvent', nil)
 	end
 end
 
