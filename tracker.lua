@@ -58,8 +58,14 @@ function frame:ADDON_LOADED(event, addon)
 end
 
 function frame:QUEST_LOG_UPDATE()
-	for qid in next, iiWatcherDB.quests do
-		AddQuestWatch(qid)
+	for i=1,GetNumQuestLogEntries() do
+		local link = GetQuestLink(i)
+		if(link) then
+			local qid = tonumber(link:match("|Hquest:(%d+):"))
+			if(iiWatcherDB.quests[qid]) then
+				AddQuestWatch(i)
+			end
+		end
 	end
 	self:UnregisterEvent'QUEST_LOG_UPDATE'
 	self.QUEST_LOG_UPDATE = nil
