@@ -22,17 +22,19 @@ hooksecurefunc('AddQuestWatch', function(qid)
 	if(not loaded) then return end
 
 	local link = GetQuestLink(qid)
-	qid = tonumber(link:match("|Hquest:(%d+):"))
-
-	iiWatcherDB.quests[qid] = true
+	if(link) then
+		qid = tonumber(link:match("|Hquest:(%d+):"))
+		iiWatcherDB.quests[qid] = true
+	end
 end)
 hooksecurefunc('RemoveQuestWatch', function(qid)
 	if(not loaded) then return end
 
 	local link = GetQuestLink(qid)
-	qid = tonumber(link:match("|Hquest:(%d+):"))
-
-	iiWatcherDB.quests[qid] = nil
+	if(link) then
+		qid = tonumber(link:match("|Hquest:(%d+):"))
+		iiWatcherDB.quests[qid] = nil
+	end
 end)
 
 local frame = CreateFrame'Frame'
