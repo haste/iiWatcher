@@ -1,4 +1,4 @@
-## Interface: 30100
+## Interface: 40000
 ## Title: iiWatcher
 ## Author: haste
 ## Version: 1.0
@@ -7,4 +7,3 @@
 ## SavedVariablesPerCharacter: iiWatcherDB
 
 achievements.lua
-tracker.lua
